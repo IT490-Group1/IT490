@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://192.168.1.35', function(error0, connection) {
+amqp.connect('amqp://192.168.1.35:15670', function(error0, connection) {
     if (error0) {
         throw error0;
     }
@@ -12,17 +12,17 @@ amqp.connect('amqp://192.168.1.35', function(error0, connection) {
         }
 
         var queue = 'hello';
+        var msg = 'Hello World!';
 
         channel.assertQueue(queue, {
             durable: false
         });
+        channel.sendToQueue(queue, Buffer.from(msg));
 
-        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
-
-        channel.consume(queue, function(msg) {
-            console.log(" [x] Received %s", msg.content.toString());
-        }, {
-            noAck: true
-        });
+        console.log(" [x] Sent %s", msg);
     });
+    setTimeout(function() {
+        connection.close();
+        process.exit(0);
+    }, 500);
 });

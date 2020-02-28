@@ -2,11 +2,11 @@ import pika
 
 def sendToUser(msg):
     # establishes a connection with RabbitMQ server
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('http://192.168.1.35:15670'))
     channel = connection.channel()
 
     # add 'helo' to the queue
-    channel.queue_declare(queue='hello')
+    channel.queue_declare(queue='website')
 
     # sending the message to the queue_declare
 

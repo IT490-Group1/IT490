@@ -1,65 +1,36 @@
-<!--<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Richard Ching</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-		<link rel="stylesheet" href="styles.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<?php
-/* 			include("rabbitFunctions.php");
-			
-			get_from_backend($out);
-
- */
-			?>
-			<br>
-			<a href="index.php">Back to index.php</a>
-		</div>
-	</body>
-</html>
-
--->
-
 <?php
 
-//function get_from_backend(&$out){
-	require_once __DIR__ . '/vendor/autoload.php';
-	use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-	$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
-	$channel = $connection->channel();
+require_once __DIR__ . '/vendor/autoload.php';
+use PhpAmqpLib\Connection\AMQPStreamConnection;
 
-	$channel->queue_declare('from_backend', false, false, false, false);
+$connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+$channel = $connection->channel();
 
-	echo " [*] Waiting for messages. To exit press CTRL+C\n";
+$channel->queue_declare('from_backend', false, false, false, false);
 
-	$callback = function ($msg) {
-		echo ' [x] Received ', $msg->body, "\n";
-		$out = '<div>';
-		
-		$out .= '<p>'.$msg.'</p>';
-		
-		$out .= '</div>';
-		echo $out;
-		
-	};
+echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
-	$channel->basic_consume('from_backend', '', false, true, false, false, $callback);
+$callback = function ($msg) {
+	echo ' [x] Received ', $msg->body, "\n";
+	$out = '<div>';
+	
+	$out .= '<p>'.$msg.'</p>';
+	
+	$out .= '</div>';
+	echo $out;
+	
+};
 
-	while ($channel->callbacks) {
-		$channel->wait();
-	}
+$channel->basic_consume('from_backend', '', false, true, false, false, $callback);
 
-	$channel->close();
-	$connection->close();
-//}
+while ($channel->callbacks) {
+	$channel->wait();
+}
 
-//get_from_backend();
+$channel->close();
+$connection->close();
+
 
 
 ?>

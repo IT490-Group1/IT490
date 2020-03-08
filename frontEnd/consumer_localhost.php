@@ -27,7 +27,7 @@
 
 <?php
 
-function get_from_backend(&$out){
+//function get_from_backend(&$out){
 	require_once __DIR__ . '/vendor/autoload.php';
 	use PhpAmqpLib\Connection\AMQPStreamConnection;
 
@@ -40,7 +40,7 @@ function get_from_backend(&$out){
 
 	$callback = function ($msg) {
 		echo ' [x] Received ', $msg->body, "\n";
-		$out .= '<div>';
+		$out = '<div>';
 		
 		$out .= '<p>'.$msg.'</p>';
 		
@@ -57,9 +57,9 @@ function get_from_backend(&$out){
 
 	$channel->close();
 	$connection->close();
-}
+//}
 
-get_from_backend();
+//get_from_backend();
 
 
 ?>

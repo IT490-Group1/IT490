@@ -2,7 +2,7 @@ import pika
 
 def sendToUser(msg):
     # establishes a connection with RabbitMQ server
-    connection = pika.BlockingConnection(pika.ConnectionParameters('http://192.168.1.35:15670'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('http://localhost:5672'))
     channel = connection.channel()
 
     # add 'helo' to the queue

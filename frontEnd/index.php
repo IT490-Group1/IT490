@@ -25,6 +25,7 @@
 ?>
 <body>
 	<form class="form-horizontal" action="consumer_localhost.php" method="get">
+	
 		<input type=submit value="Get Data">
 	</form>
 	<div id="container" class="container">

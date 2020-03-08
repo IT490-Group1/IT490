@@ -17,8 +17,16 @@
 			});
 		});
 	</script> -->
+
 </head>
+<?php
+	include('consumer_localhost.php');
+	include('rabbitFunctions.php');
+?>
 <body>
+	<form class="form-horizontal" action="consumer_localhost.php" method="get">
+		<input type=submit value="Get Data">
+	</form>
 	<div id="container" class="container">
     <h1>Welcome to MedRX</h1>
 		<div class="panel-group">

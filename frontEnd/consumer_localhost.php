@@ -12,6 +12,12 @@ echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
 $callback = function ($msg) {
 	echo ' [x] Received ', $msg->body, "\n";
+	$output = '<div>';
+	
+	$output .= '<p>'.$msg.'</p>';
+	
+	$output .= '</div>';
+	echo $output;
 	
 };
 

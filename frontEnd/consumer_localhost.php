@@ -31,6 +31,8 @@ $callback = function ($msg) {
 	
 	$out .= '</div>';
 	echo $out;
+	$channel->close();
+	$connection->close();
 	
 };
 

@@ -15,7 +15,7 @@ $callback = function ($msg) {
 	echo ' [x] Received ', $msg->body, "\n";
 	$out = '<div>';
 	
-	$out .= '<p>'.$msg.'</p>';
+	$out .= '<p>'.$msg->body.'</p>';
 	
 	$out .= '</div>';
 	echo $out;

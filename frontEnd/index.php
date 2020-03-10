@@ -10,7 +10,7 @@
 	<!-- <script>
 		$(document).ready(function(){
 
-			$('#noEnter').keypress(function(event){
+			$("#noEnter").keypress(function(event){
 				if (event.keyCode === 13) {
 					event.preventDefault();
 				}
@@ -19,15 +19,23 @@
 	</script> -->
 
 </head>
+
 <?php
-	include('consumer_localhost.php');
-	include('rabbitFunctions.php');
+//	include "publisher_localhost.php";
 ?>
+
 <body>
-	<form class="form-horizontal" action="consumer_localhost.php" method="get">
+	<form class="form-horizontal" action="publisher.php" method="get">
 	
-		<input type=submit value="Get Data">
+		<input type=submit value="Send 'Hello World!'">
 	</form>
+<!--	<a href="consumer.php">consume messages</a>-->
+	<form class="form-horizontal" action="consumer.php" method="get">
+
+ 	        <input type=submit value="receive messages">
+        </form>
+
+
 	<div id="container" class="container">
     <h1>Welcome to MedRX</h1>
 		<div class="panel-group">
@@ -50,3 +58,4 @@
 	</div>
 </body>
 </html>
+

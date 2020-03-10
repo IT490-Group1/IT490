@@ -31,7 +31,7 @@ function get_from_backend(&$out){
 	$channel->close();
 	$connection->close();
 }
-
+get_from_backend($out);
 
 
 ?>

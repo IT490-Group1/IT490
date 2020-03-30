@@ -1,0 +1,18 @@
+Database: projectDB
+
+
+Table: accounts
+
+userID int not null primary key
+username varchar(20) unique
+password varchar(255)
+fName varchar(20)
+lName varchar(20)
+
+
+
+Table: messages
+
+toUser int
+fromUser int
+body varchar(255)

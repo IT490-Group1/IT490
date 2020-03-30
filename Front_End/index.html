@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+</head>
+<body>
+<main>
+    <div class="container">
+        <center>
+            <h1>Welcome to MedRx</h1>
+            <form action ="login.php" method="post">
+
+                <table class=".mb-3">
+                    <tr>
+                        <td>User Name:</td>
+                        <td><input type="text" id="username" name="username" class="form-control" required minlength="3" maxlength="10"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="password" name="password" class="form-control"  required minlength="3" maxlength="10"></td>
+                    </tr>
+                    
+
+                </table>
+                <input class="btn btn-info" type="submit" name="submit" value="login">
+                <input class="btn btn-info" type="button" onclick="location.href='Registration.html';"value='Register' />
+            </form>
+        </center>
+    </div>
+
+</main>
+
+</body>
+</html>
